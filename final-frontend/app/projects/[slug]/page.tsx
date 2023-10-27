@@ -14,7 +14,7 @@ export default async function ProjectPage({ params }: Props){
 
 
     return(
-        <main>
+        <main className="px-4">
             <h1 className="text-4xl font-bold text-center pt-4 pb-16">{project.name}</h1>
             <div className="relative h-72">
                 <Image
@@ -23,9 +23,11 @@ export default async function ProjectPage({ params }: Props){
                 objectFit="contain"
                 />
             </div>
-            <div>
-                <p>{project.description}</p>
-                <PortableText value={project.content}/>
+            <div className="pt-4">
+                <p className="text-center text-sm text-zinc-400">{project.description}</p>
+                <div className="pt-5">
+                    <PortableText value={project.content}/>
+                </div>
             </div>
 
             <div className="text-center pt-20">

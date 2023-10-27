@@ -1,7 +1,7 @@
 "use client"
 
 import { Popover, Transition } from "@headlessui/react"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { Fragment } from "react"
 
@@ -30,13 +30,12 @@ export default function Menu(){
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
             >
-                <Popover.Panel className="bg-violet-100 right-0.5 down-1 absolute p-2 w-20 flex justify-center">
+                <Popover.Panel className="bg-violet-100 right-1 top-12 absolute p-2 w-24 flex justify-center">
                     <div>
                         <div>
                             {dropDownOptions.map((option) => (
                                 <Link key={option.title} href={option.href}>
-                                    <p className="md:text-lg">{option.title}</p>
-                                    <hr/>
+                                    <p className="md:text-lg flex">{option.title}<span><ChevronRight className="w-3"/></span></p>
                                 </Link>
                             ))}
                         </div>

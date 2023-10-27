@@ -5,7 +5,7 @@ export default async function Hero(){
     const profile = await getProfile();
     
     return(
-        <section className="flex flex-col items-center py-10">
+        <section className="flex flex-col items-center py-12">
             <div>
                 <Image
                 src={profile.image} alt="Profile Picture"

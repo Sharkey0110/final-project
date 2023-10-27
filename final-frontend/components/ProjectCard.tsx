@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ProjectCard(project : Projects){
     return(
-        <article className="bg-violet-50 rounded-md shadow-lg mb-16">
+        <article className="bg-violet-50 rounded-md shadow-lg">
             <div className="relative h-72">
                 <Image
                 src={project.image} alt={project.name}
