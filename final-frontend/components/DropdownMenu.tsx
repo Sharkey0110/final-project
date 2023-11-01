@@ -29,7 +29,7 @@ export default function DropdownMenu(){
             >
                 <Menu.Items className="absolute bg-violet-100 p-3 top-2.5 right-px rounded-md">
                         {dropDownOptions.map((option) => (
-                            <Menu.Item>
+                            <Menu.Item key={option.title}>
                                 {({ active }) => (
                                     <div>
                                         <Link

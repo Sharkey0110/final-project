@@ -18,6 +18,15 @@ export type Projects = {
     content: PortableTextBlock[];
 }
 
+export type Experiences = {
+    _id: string;
+    title: string;
+    jobTitle: string;
+    startDate: string;
+    endDate: string;
+    description: PortableTextBlock[]
+}
+
 const client = createClient({
     projectId: "tt66rs7l",
     dataset: "production",
@@ -62,5 +71,18 @@ export async function getProject(slug: string): Promise<Projects>{
             "slug": slug.current,
             content,
         }`,{ slug }
+    )
+}
+
+export async function getExperiences(){
+    return client.fetch<Experiences[]>(
+        groq`*[_type == "experience"]{
+            _id,
+            title,
+            jobTitle,
+            startDate,
+            endDate,
+            description,
+        }`
     )
 }
