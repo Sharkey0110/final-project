@@ -61,6 +61,7 @@ export async function getProjects(): Promise<Projects[]>{
             description,
             "slug": slug.current,
             content,
+            tags,
         }`
     )
 }

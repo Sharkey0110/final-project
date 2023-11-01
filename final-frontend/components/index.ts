@@ -10,6 +10,4 @@ export {
     Hero,
     ProjectCard,
     ExperienceCard,
-    SearchButton,
-
 }
