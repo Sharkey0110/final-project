@@ -27,6 +27,11 @@ export type Experiences = {
     description: PortableTextBlock[]
 }
 
+type Tags = {
+    _id: string;
+    tag: string;
+}
+
 const client = createClient({
     projectId: "tt66rs7l",
     dataset: "production",
@@ -83,6 +88,15 @@ export async function getExperiences(){
             startDate,
             endDate,
             description,
+        }`
+    )
+}
+
+export async function getTags(){
+    return client.fetch<Tags[]>(
+        groq`*[_type == "tags"]{
+            _id,
+            tag,
         }`
     )
 }
