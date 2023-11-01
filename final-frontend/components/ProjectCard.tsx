@@ -9,7 +9,7 @@ export default function ProjectCard(project : Projects){
                 <Image
                 src={project.image} alt={project.name}
                 layout="fill"
-                objectFit="contain"
+                objectFit="cover"
                 className="rounded-t-md"
                 />
             </div>
@@ -18,7 +18,11 @@ export default function ProjectCard(project : Projects){
                 <p className="pt-2">{project.description}</p>
 
                 <Link href={`/projects/${project.slug}`} key={project._id}>
-                    <p className="pt-2 text-violet-900 hover:underline">See More</p>
+                    <div className=" flex justify-center">
+                        <div className="bg-pink-200 py-2 px-3 mt-5 rounded-full hover:bg-pink-300 duration-200">
+                            <p className="font-medium">See More</p>
+                        </div>
+                    </div>
                 </Link>
             </div>
         </article>

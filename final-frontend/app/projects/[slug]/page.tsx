@@ -16,9 +16,9 @@ export default async function ProjectPage({ params }: Props){
 
 
     return(
-        <main className="px-6 md:px-24 xl:px-48">
+        <main className="px-6 md:px-24 xl:px-48 max-w-[1800px] mx-auto">
             <h1 className="text-4xl font-bold text-center pt-4 pb-16">{project.name}</h1>
-            <div className="relative h-72">
+            <div className="relative h-72 md:h-96 lg:h-[500px]">
                 <Image
                 src={project.image} alt={project.name}
                 layout="fill"
