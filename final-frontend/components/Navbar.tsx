@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Menu from "./Menu"
+import Menu from "./DropdownMenu"
 
 export default function Navbar(){
     return(
