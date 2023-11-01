@@ -7,16 +7,13 @@ export default async function Home() {
   const projects = await getProjects()
 
   return (
-    <main>
+    <main className='max-w-[2400px] mx-auto'>
       <div>
-        <div>
           <Hero />
-        </div>
-
-        <div className='p-5 border border-t-violet-300 text-center'>
+        <div className='p-5 border-t-2 border-t-violet-300 text-center'>
           <h2 className='text-4xl font-bold pb-12'>Projects</h2>
           
-          <div className=' px-5 grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-16 xl:gap-x-40 gap-y-32'>
+          <div className=' px-5 grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-16 xl:gap-x-20 gap-y-32'>
             {projects.map((project) => (
               <ProjectCard key={project._id} {...project} />
             ))}
