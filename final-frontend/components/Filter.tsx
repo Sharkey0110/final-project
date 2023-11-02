@@ -4,17 +4,23 @@ import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { ChevronDown } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { Tags } from '@/sanity/sanityUtils'
+import { Tag } from '@/sanity/sanityUtils'
 
-export default function Filter({ tags }) {
-    console.log(tags)
+export interface FilterProps{
+    tags: Array<Tag>
+}
+
+export default function Filter({ tags }: FilterProps) {
   const [selected, setSelected] = useState(tags[0])
   const router = useRouter();
 
   function updateParams(e: {_id: string}){
-    console.log(e)
     const searchParams = new URLSearchParams(window.location.search);
-    searchParams.set("tag", e._id);
+    if(e._id == "c2399e6b-a0e6-4dca-bcb0-ea737ce0b77b"){
+        searchParams.delete("tag")
+    } else{
+        searchParams.set("tag", e._id);
+    }
     const newPathName = `${window.location.pathname}?${searchParams.toString()}`
     router.push(newPathName)
   }
@@ -37,7 +43,7 @@ export default function Filter({ tags }) {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-              {tags.map((tag: Tags) => (
+              {tags.map((tag: Tag) => (
                 <Listbox.Option
                   key={tag._id}
                   className={({ active }) =>

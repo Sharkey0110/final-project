@@ -8,7 +8,7 @@ type Profile = {
     caption: string;
 }
 
-export type Projects = {
+export type Project = {
     _id: string;
     _createdAt: Date;
     name: string;
@@ -16,9 +16,10 @@ export type Projects = {
     description: string,
     slug: string;
     content: PortableTextBlock[];
+    url: string;
 }
 
-export type Experiences = {
+export type Experience = {
     _id: string;
     title: string;
     jobTitle: string;
@@ -27,8 +28,12 @@ export type Experiences = {
     description: PortableTextBlock[]
 }
 
-export type Tags = {
+export type Tag = {
     _id: string;
+    tag: string;
+}
+
+type Filter = {
     tag: string;
 }
 
@@ -51,9 +56,9 @@ export async function getProfile(){
     return resposne[0];
 }
 
-export async function getProjects(): Promise<Projects[]>{
+export async function getProjects(filters: Filter): Promise<Project[]>{
     return client.fetch(
-        groq`*[_type == "project"]{
+        groq`*[_type == "project" ${filters.tag? "&& $filters.tag in tags[]->_id" : ""} ] | order(_createdAt desc){
             _id,
             _createdAt,
             name,
@@ -62,11 +67,11 @@ export async function getProjects(): Promise<Projects[]>{
             "slug": slug.current,
             content,
             tags,
-        }`
+        }`,{ filters }
     )
 }
 
-export async function getProject(slug: string): Promise<Projects>{
+export async function getProject(slug: string): Promise<Project>{
     return client.fetch(
         groq`*[_type == "project" && slug.current == $slug][0]{
             _id,
@@ -76,12 +81,13 @@ export async function getProject(slug: string): Promise<Projects>{
             description,
             "slug": slug.current,
             content,
+            url
         }`,{ slug }
     )
 }
 
 export async function getExperiences(){
-    return client.fetch<Experiences[]>(
+    return client.fetch<Experience[]>(
         groq`*[_type == "experience"]{
             _id,
             title,
@@ -94,8 +100,8 @@ export async function getExperiences(){
 }
 
 export async function getTags(){
-    return client.fetch<Tags[]>(
-        groq`*[_type == "tags"]{
+    return client.fetch<Tag[]>(
+        groq`*[_type == "tags"] | order(tag asc){
             _id,
             tag,
         }`

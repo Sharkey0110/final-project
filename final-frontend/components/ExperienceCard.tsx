@@ -1,8 +1,8 @@
-import { Experiences } from "@/sanity/sanityUtils";
+import { Experience } from "@/sanity/sanityUtils";
 import { PortableText } from "@portabletext/react";
 
 
-export default function ExperienceCard(experience: Experiences){
+export default function ExperienceCard(experience: Experience){
     return(
         <article className="border-2 border-violet-300 p-3 xl:p-6">
             <h2 className="text-xl font-bold">{experience.title}</h2>

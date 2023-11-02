@@ -32,8 +32,9 @@ export default async function ProjectPage({ params }: Props){
                 </div>
             </div>
 
-            <div className="text-center pt-20 md:pt-28">
-                <Link className="bg-violet-200 hover:bg-violet-300 px-3 py-2 rounded-full cursor-pointer" href="/">Go Back</Link>
+            <div className="text-center pt-20 md:pt-28 flex items-center justify-center gap-x-20">
+                {project.url? <Link className="font-semibold text-lg bg-yellow-200 rounded-full px-3 py-2 hover:bg-yellow-300" href={project.url}>Github code</Link> : ""}
+                <Link className="text-lg font-semibold bg-violet-200 hover:bg-violet-300 px-3 py-2 rounded-full cursor-pointer" href="/">Go Back</Link>
             </div>
         </main>
     )
