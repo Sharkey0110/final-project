@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import ProjectCard from "./ProjectCard";
 import ExperienceCard from "./ExperienceCard";
-import SearchButton from "./SearchButton";
+import Filter from "./Filter";
 
 
 export {
@@ -10,4 +10,5 @@ export {
     Hero,
     ProjectCard,
     ExperienceCard,
+    Filter,
 }

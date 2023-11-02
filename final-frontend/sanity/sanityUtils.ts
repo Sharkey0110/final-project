@@ -27,7 +27,7 @@ export type Experiences = {
     description: PortableTextBlock[]
 }
 
-type Tags = {
+export type Tags = {
     _id: string;
     tag: string;
 }
