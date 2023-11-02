@@ -42,7 +42,11 @@ export default {
                     ]
                 }
             ]
-
+        },
+        {
+            name: "url",
+            title: "Github Link",
+            type: "url"
         }
     ]
 }
