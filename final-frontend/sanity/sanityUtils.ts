@@ -41,7 +41,6 @@ const client = createClient({
     projectId: "tt66rs7l",
     dataset: "production",
     apiVersion: "2023-10-27",
-    useCdn: false,
 })
 
 export async function getProfile(){
